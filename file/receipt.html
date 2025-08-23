@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receipt Template</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f0f7ff 0%, #e0ecff 100%);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .receipt-container {
+        max-width: 650px;
+        margin: 0 auto;
+        background-color: white;
+        border: 3px solid #0e38b1;
+        border-radius: 12px;
+        padding: 0;
+        box-shadow: 0 10px 30px rgba(14, 56, 177, 0.15);
+        overflow: hidden;
+      }
+
+      .receipt-header {
+        background: linear-gradient(45deg, #f7f9ff, #e8f0ff);
+        padding: 12px 30px 5px;
+        border-bottom: 1px solid #0e38b1;
+        position: relative;
+      }
+
+      .header-top {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .receipt-title-container {
+        margin-left: 90px;
+      }
+
+      .logo-placeholder {
+        display: flex;
+        margin-right: 15px;
+      }
+
+      .firm-info {
+        font-size: 14px;
+        color: #0e38b1;
+        font-weight: 600;
+      }
+
+      .receipt-title {
+        font-size: 30px;
+        font-weight: bold;
+        color: #0e38b1;
+        margin: 0;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 3px rgba(14, 56, 177, 0.2);
+      }
+
+      .receipt-address {
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+        width: 100%;
+        padding: 8px 0;
+        font-style: italic;
+        border-top: 1px dashed #ccc;
+      }
+
+      .receipt-body {
+        padding: 30px;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" fill="none" stroke="%23f0f5ff" stroke-width="0.5"/></svg>')
+          repeat;
+      }
+
+      .receipt-number-date {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 15px;
+      }
+
+      .receipt-number label,
+      .receipt-date label {
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .receipt-number input,
+      .receipt-date input {
+        border: none;
+        border-bottom: 1px solid #0e38b1;
+        padding: 8px 5px;
+        font-size: 16px;
+        width: 180px;
+        background: transparent;
+        color: #333;
+      }
+
+      .form-row {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .form-row label {
+        font-size: 16px;
+        color: #333;
+        margin-right: 10px;
+        white-space: nowrap;
+        font-weight: 500;
+      }
+
+      .form-row input {
+        flex: 1;
+        border: none;
+        border-bottom: 1px solid #0e38b1;
+        padding: 8px 5px;
+        font-size: 16px;
+        background: transparent;
+        color: #333;
+      }
+
+      .form-row input:focus {
+        outline: none;
+        border-bottom: 1px solid #0e38b1;
+        background-color: #f0f7ff;
+      }
+
+      .amount-section {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .rupees-section {
+        flex: 1;
+      }
+
+      .rupees-label {
+        font-size: 18px;
+        font-weight: bold;
+        /* color: #0e38b1; */
+        margin-bottom: 8px;
+      }
+
+      .rupees-input {
+        border: none;
+        border-bottom: 1px solid #0e38b1;
+        font-size: 18px;
+        padding: 10px 5px;
+        width: 100%;
+        max-width: 180px;
+        background: transparent;
+        font-weight: 600;
+      }
+
+      .signature-line {
+        text-align: right;
+        font-size: 16px;
+        color: #666;
+        padding-top: 15px;
+      }
+
+      .note {
+        margin-top: 15px;
+        font-size: 12px;
+        color: #666;
+        font-style: italic;
+      }
+
+      .payment-details {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+
+      .payment-details span {
+        font-size: 14px;
+        color: #333;
+        font-weight: 500;
+      }
+
+      .payment-details label {
+        font-size: 14px;
+        color: #333;
+        font-weight: 500;
+      }
+
+      .payment-details input {
+        border: none;
+        border-bottom: 1px solid #0e38b1;
+        padding: 5px;
+        margin: 0 5px;
+        background: transparent;
+        width: 100px;
+      }
+
+      .actions {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 25px;
+      }
+
+      .btn {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-print {
+        background: #0e38b1;
+        color: white;
+      }
+
+      .btn-print:hover {
+        background: #0a2a8a;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(14, 56, 177, 0.3);
+      }
+
+      .btn-clear {
+        background: #f0f0f0;
+        color: #333;
+      }
+
+      .btn-clear:hover {
+        background: #e0e0e0;
+        transform: translateY(-2px);
+      }
+
+      @media print {
+        body {
+          background-color: white;
+          padding: 0;
+        }
+        .receipt-container {
+          box-shadow: none;
+          max-width: none;
+          margin: 0;
+          border: none;
+        }
+        .actions {
+          display: none;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .header-top {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .logo-container {
+          margin-bottom: 15px;
+        }
+
+        .receipt-title-container {
+          margin: 15px 0;
+        }
+
+        .receipt-number-date {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .amount-section {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 20px;
+        }
+
+        .payment-details {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="receipt-container">
+      <div class="receipt-header">
+        <div class="header-top">
+          <div class="logo-container">
+            <div class="logo-placeholder">
+              <img src="assets/img/logo/indi-logo.png" alt="" width="130" />
+            </div>
+            <!-- <div class="firm-info">
+              INDI RECEIPT<br />
+              <span style="font-size: 12px">Official Payment Receipt</span>
+            </div> -->
+          </div>
+
+          <div class="receipt-title-container">
+            <div class="receipt-title">RECEIPT</div>
+          </div>
+        </div>
+
+        <div class="receipt-address">
+          G Block G-5 Sector 63 Noida, Uttar Pradesh - 201301
+        </div>
+      </div>
+
+      <div class="receipt-body">
+        <div class="receipt-number-date">
+          <div class="receipt-number">
+            <span>RECEIPT NO.</span>
+            <input type="text" />
+          </div>
+
+          <div class="receipt-date">
+            <label>DATE</label>
+            <input type="text" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>RECEIVED with thanks from</label>
+          <input type="text" />
+        </div>
+
+        <div class="form-row">
+          <label>the sum of Rupees</label>
+          <input type="text" />
+        </div>
+
+        <div class="form-row">
+          <div class="payment-details">
+            <span>by Cheque / Cash / Draft / UPI</span>
+            <label>No.</label>
+            <input type="text" />
+            <label>Dated</label>
+            <input type="text" />
+            <label>Balance on</label>
+            <input type="text" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Total Amount</label>
+          <input type="text" />
+        </div>
+
+        <div class="amount-section">
+          <div class="rupees-section">
+            <div class="rupees-label">
+              Rs. <input type="text" class="rupees-input" />
+            </div>
+
+            <div class="note">Receipt Subject to Realization of Cheque</div>
+          </div>
+        </div>
+        <div class="signature-line">Signature ________________</div>
+      </div>
+    </div>
+  </body>
+</html>

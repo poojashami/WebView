@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service Page</title>
+
+    <!--=====FAB ICON=======-->
+    <link
+      rel="shortcut icon"
+      href="assets/img/logo/titile.png"
+      type="image/x-icon"
+    />
+
+    <!--=====CSS=======-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="assets/css/nice-select.css" />
+    <link rel="stylesheet" href="assets/css/slick-slider.css" />
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/css/aos.css" />
+    <link rel="stylesheet" href="assets/css/mobile-menu.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!--=====JQUERY=======-->
+    <script src="assets/js/jquery-3-7-1.min.js"></script>
+
+    <script src="assets/js/jquery-3-7-1.min.js"></script>
+
+
+      <style>
+      .gallery-container {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin: 2rem 0;
+        max-width: 1400px;
+      }
+
+      .gallery-title {
+        background: linear-gradient(135deg, #667eea, #4851a2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: bold;
+        font-size: 2.5rem;
+      }
+
+      .nav-tabs {
+        border: none;
+        margin-bottom: 2rem;
+      }
+
+      .nav-tabs .nav-link {
+        background: transparent;
+        border: 2px solid #e9ecef;
+        color: #6c757d;
+        border-radius: 25px;
+        margin: 0 5px;
+        padding: 12px 24px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .nav-tabs .nav-link:hover {
+        color: #667eea;
+        border-color: #667eea;
+        transform: translateY(-2px);
+      }
+
+      .nav-tabs .nav-link.active {
+        background: linear-gradient(135deg, #667eea, #4851a2);
+        color: white;
+        border-color: transparent;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+      }
+
+      .image-item {
+        margin-bottom: 2rem;
+        opacity: 0;
+        transform: scale(0.8);
+        animation: fadeInScale 0.6s ease forwards;
+      }
+
+      .image-item.hidden {
+        display: none !important;
+      }
+
+      @keyframes fadeInScale {
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .image-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        cursor: pointer;
+        height: 100%;
+      }
+
+      .image-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      }
+
+      .image-placeholder {
+        width: 100%;
+        height: 250px;
+        background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: #adb5bd;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .gallery-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .image-card:hover .gallery-image {
+        transform: scale(1.05);
+      }
+
+      .image-placeholder::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transform: rotate(45deg);
+        transition: all 0.6s ease;
+      }
+
+      .image-card:hover .image-placeholder::before {
+        animation: shimmer 1.5s ease;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%) translateY(-100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+      }
+
+      .image-info {
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .image-title {
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      .image-category {
+        background: linear-gradient(135deg, #667eea, #4851a2);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        display: inline-block;
+      }
+
+      .count-badge {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        border-radius: 20px;
+        padding: 5px 15px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-left: 10px;
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 3rem;
+        color: #6c757d;
+      }
+
+      .no-results i {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+      }
+
+      /* Loading Spinner */
+      .loading-spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Lightbox Styles */
+      .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .lightbox.active {
+        display: flex;
+      }
+
+      .lightbox-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        text-align: center;
+      }
+
+      .lightbox-image-container {
+        width: 80vw;
+        height: 60vh;
+        max-width: 800px;
+        max-height: 600px;
+        background: linear-gradient(45deg, #2a2a2a, #3a3a3a);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+      }
+
+      .lightbox-display-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+
+      .lightbox-placeholder-icon {
+        font-size: 6rem;
+        color: #666;
+      }
+
+      .lightbox-info {
+        color: white;
+        margin-top: 1rem;
+        padding: 0 2rem;
+      }
+
+      .lightbox-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .lightbox-category {
+        background: linear-gradient(135deg, #667eea, #4851a2);
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        display: inline-block;
+      }
+
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 10001;
+      }
+
+      .lightbox-nav:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .lightbox-prev {
+        left: 2rem;
+      }
+
+      .lightbox-next {
+        right: 2rem;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 10001;
+      }
+
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+
+      .lightbox-counter {
+        position: absolute;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        z-index: 10001;
+      }
+
+      @media (max-width: 768px) {
+        .gallery-title {
+          font-size: 2rem;
+        }
+
+        .nav-tabs .nav-link {
+          margin: 5px 2px;
+          padding: 10px 20px;
+          font-size: 0.9rem;
+        }
+
+        .lightbox-nav {
+          width: 40px;
+          height: 40px;
+        }
+
+        .lightbox-prev {
+          left: 1rem;
+        }
+
+        .lightbox-next {
+          right: 1rem;
+        }
+
+        .lightbox-close {
+          top: 1rem;
+          right: 1rem;
+          width: 40px;
+          height: 40px;
+        }
+
+        .lightbox-counter {
+          top: 1rem;
+        }
+
+        .lightbox-image-container {
+          width: 95vw;
+          height: 50vh;
+        }
+
+        .lightbox-placeholder-icon {
+          font-size: 4rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="body tg-heading-subheading animation-style3">
+    <!--=====progress END=======-->
+
+    <div class="paginacontainer">
+      <div class="progress-wrap">
+        <svg
+          class="progress-circle svg-content"
+          width="100%"
+          height="100%"
+          viewBox="-1 -1 102 102"
+        >
+          <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+      </div>
+    </div>
+
+    <!--=====progress END=======-->
+
+    <!-- Preloader -->
+    <!-- <section>
+      <div id="preloader">
+        <div id="ctn-preloader" class="ctn-preloader ctn-preloader1">
+          <div class="animation-preloader">
+            <div class="spinner"></div>
+            <div class="txt-loading">
+              <span data-text-preloader="T" class="letters-loading"> T </span>
+              <span data-text-preloader="E" class="letters-loading"> E </span>
+              <span data-text-preloader="C" class="letters-loading"> C </span>
+              <span data-text-preloader="H" class="letters-loading"> H </span>
+              <span data-text-preloader="X" class="letters-loading"> X </span>
+              <span data-text-preloader="E" class="letters-loading"> E </span>
+              <span data-text-preloader="N" class="letters-loading"> N </span>
+            </div>
+          </div>
+          <div class="loader-section-left loader-section section-left"></div>
+          <div class="loader-section-right loader-section section-right"></div>
+        </div>
+      </div>
+    </section> -->
+
+    <!--=====HEADER START=======-->
+
+    <!-- <div class="header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="pera">
+              <p>
+                <img src="assets/img/icons/header-top-span.png" alt="" /> A
+                Professional Technology & It Solution Company Based On World
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  <header>
+    <div class="header-area header-area2 header-area-all d-none d-lg-block" id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="header-elements">
+              <div class="site-logo">
+                <a href="index2.html">
+                  <img src="assets/img/logo/indi-logo.png" alt="" />
+                </a>
+              </div>
+ 
+              <div class="main-menu-ex main-menu-ex1">
+                <ul>
+                  <li>
+                    <a href="./index2.html" >Home </a>
+                  </li>
+
+                  <li class="dropdown-menu-parrent">
+                    <a href="./about.html" >About</i></a>
+                  </li>
+
+                  <li class="dropdown-menu-parrent">
+                    <a href="./service.html">Services </i></a>
+                  </li>
+                  <li class="dropdown-menu-parrent">
+                    <a href="./corporate-training.html">Corporate Training </i></a>
+                  </li>
+                  <li class="dropdown-menu-parrent">
+                    <a href="./gallery.html" class="active">Gallery </i></a>
+                  </li>
+                  <li class="dropdown-menu-parrent">
+                    <a href="./contact.html">Contact </i></a>
+                  </li>
+                  <li class="dropdown-menu-parrent">
+                    <a href="./career.html">Career </i></a>
+                  </li>
+                
+                </ul>
+              </div>
+
+              <div class="header2-buttons">
+                <div class="contact-3 d-lg-block d-none">
+                  <div class="consulting2">
+                    <div class="search-icon header__search header-search-btn">
+                      <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- header search start -->
+                <div class="header-search-form-wrapper">
+                  <div class="tx-search-close tx-close">
+                    <i class="fa-solid fa-xmark"></i>
+                  </div>
+                  <div class="header-search-container">
+                    <form role="search" class="search-form">
+                      <input type="search" class="search-field" placeholder="Search …" value="" name="s" />
+                      <button type="submit" class="search-submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                      </button>
+                    </form>
+                  </div>
+                </div>
+                <!-- header search end -->
+                <div class="body-overlay"></div>
+                <!-- slide bar end -->
+
+                <div class="button">
+                  <a class="theme-btn2" href="contact.html">Your Query
+                    <span class="arrow1"><i class="fa-solid fa-arrow-right"></i></span><span class="arrow2"><i
+                        class="fa-solid fa-arrow-right"></i></span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+    <!--=====HEADER END=======-->
+
+    <!--=====Mobile header start=======-->
+    <div class="mobile-header d-block d-lg-none">
+      <div class="container-fluid">
+        <div class="col-12">
+          <div class="mobile-header-elements">
+            <div class="mobile-logo">
+              <a href="index1.html"
+                ><img src="assets/img/logo/header-logo1.png" alt=""
+              /></a>
+            </div>
+            <div class="mobile-nav-icon">
+              <i class="fa-duotone fa-bars-staggered"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-sidebar d-block d-lg-none">
+      <div class="logo-m">
+        <a href="index.html"
+          ><img src="assets/img/logo/header3-logo.png" alt=""
+        /></a>
+      </div>
+      <div class="menu-close">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="mobile-nav">
+        <ul>
+          <li class="has-dropdown">
+            <a href="#">Home </a>
+            <ul class="sub-menu">
+              <li class="has-dropdown has-dropdown1">
+                <a href="#">Multipage</a>
+                <ul class="sub-menu">
+                  <li><a href="index.html">Home 1</a></li>
+                  <li><a href="index2.html">Home 2</a></li>
+                  <li><a href="index3.html">Home 3</a></li>
+                  <li><a href="index4.html">Home 4</a></li>
+                  <li><a href="index5.html">Home 5</a></li>
+                  <li><a href="index6.html">Home 6</a></li>
+                  <li><a href="index7.html">Home 7</a></li>
+                  <li><a href="index8.html">Home 8</a></li>
+                  <li><a href="index9.html">Home 9</a></li>
+                  <li><a href="index10.html">Home 10</a></li>
+                </ul>
+              </li>
+              <li class="has-dropdown has-dropdown1">
+                <a href="#">Landing Page</a>
+                <ul class="sub-menu">
+                  <li><a href="single-index1.html">Home 1</a></li>
+                  <li><a href="single-index2.html">Home 2</a></li>
+                  <li><a href="single-index3.html">Home 3</a></li>
+                  <li><a href="single-index4.html">Home 4 </a></li>
+                  <li><a href="single-index5.html">Home 5 </a></li>
+                  <li><a href="single-index6.html">Home 6 </a></li>
+                  <li><a href="single-index7.html">Home 7 </a></li>
+                  <li><a href="single-index8.html">Home 8 </a></li>
+                  <li><a href="single-index9.html">Home 9 </a></li>
+                  <li><a href="single-index10.html">Home 10 </a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="about.html">About Us</a></li>
+          <li class="has-dropdown">
+            <a href="#">Service</a>
+            <ul class="sub-menu">
+              <li><a href="service.html">Service</a></li>
+              <li><a href="service-details-left.html">Service Left</a></li>
+              <li><a href="service-details-right.html">Service Right</a></li>
+              <li><a href="service-details.html">Service Details</a></li>
+            </ul>
+          </li>
+
+          <li class="has-dropdown">
+            <a href="#">Pages</a>
+            <ul class="sub-menu">
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="team.html">Team</a></li>
+              <li><a href="testimonial.html">Testimonial</a></li>
+              <li><a href="error.html">404</a></li>
+            </ul>
+          </li>
+
+          <li class="has-dropdown">
+            <a href="#">Blog</a>
+            <ul class="sub-menu">
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="blog-sidebar.html">Blog Sidebar</a></li>
+              <li><a href="blog-details-left.html">Details Left</a></li>
+              <li><a href="blog-details-right.html">Details Right</a></li>
+              <li><a href="blog-details.html">Blog Details</a></li>
+            </ul>
+          </li>
+
+          <li class="has-dropdown">
+            <a href="#">Project</a>
+            <ul class="sub-menu">
+              <li><a href="project.html">Project</a></li>
+              <li><a href="project-details-left.html">Project Left</a></li>
+              <li><a href="project-details-right.html">Project Right</a></li>
+              <li><a href="project-details.html">Project Details</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="mobile-button">
+          <a class="menu-btn2" href="service.html"
+            >Learn More <span><i class="fa-solid fa-arrow-right"></i></span
+          ></a>
+        </div>
+
+        <div class="single-footer-items">
+          <h3>Contact Us</h3>
+
+          <div class="contact-box">
+            <div class="icon">
+              <img src="assets/img/icons/footer1-icon1.png" alt="" />
+            </div>
+            <div class="pera">
+              <a href="tel:0500222333">0500 222 333</a>
+            </div>
+          </div>
+
+          <div class="contact-box">
+            <div class="icon">
+              <img src="assets/img/icons/footer1-icon2.png" alt="" />
+            </div>
+            <div class="pera">
+              <a href="tel:0356588547">03 5658 8547</a>
+            </div>
+          </div>
+
+          <div class="contact-box">
+            <div class="icon">
+              <img src="assets/img/icons/footer1-icon3.png" alt="" />
+            </div>
+            <div class="pera">
+              <a href="mailto:admin@techxen.org">admin@techxen.org</a>
+            </div>
+          </div>
+
+          <div class="contact-box">
+            <div class="icon">
+              <img src="assets/img/icons/footer1-icon4.png" alt="" />
+            </div>
+            <div class="pera">
+              <a href="mailto:admin@techxen.org">www.techxen.org</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-infos">
+          <h3>Our Location</h3>
+          <ul class="social-icon">
+            <li>
+              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!--=====Mobile header end=======-->
+
+    <!--=====HERO AREA START=======-->
+
+ <div class="common-hero">
+      <div class="container">
+        <div class="row align-items-center text-center">
+          <div class="col-lg-6 m-auto">
+            <div class="main-heading">
+              <h1 class="gallery-title">
+                <i class="fas fa-images me-3"></i>Image Gallery
+              </h1>
+              <div class="space16"></div>
+              <span class="span"
+                ><img src="assets/img/icons/span1.png" alt="" />
+                <a href="index.html">Home</a>
+                <span class="arrow"
+                  ><i class="fa-regular fa-angle-right"></i
+                ></span>
+                Gallery</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--=====HERO AREA END=======-->
+
+    <section class="hero10-benar">
+      <div class="container-fluid p-0">
+        <div class="row">
+          <div class="col-12">
+            <div class="marquee-wrap marquee-wrap-inner">
+              <div class="marquee-text">
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo1.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo2.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo3.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo4.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo5.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo6.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo7.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo1.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo2.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo3.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo4.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo5.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo6.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo7.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo4.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo5.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo6.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo7.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo1.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo2.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo3.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo4.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo5.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo6.png" alt="" />
+                </div>
+
+                <div class="brand-single-box">
+                  <img src="assets/img/logo/slider-logo7.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-after"></div>
+      </div>
+    </section>
+
+
+    <!--=====SERVICE AREA START=======-->
+
+ <div class="gallery-container mx-auto">
+      <!-- Tab Navigation -->
+      <ul
+        class="nav nav-tabs justify-content-center"
+        id="categoryTabs"
+        role="tablist"
+      >
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="all-tab"
+            data-category="all"
+            type="button"
+          >
+            <i class="fas fa-th-large me-2"></i>All
+            <span class="count-badge" id="all-count">0</span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="activity-tab"
+            data-category="activity"
+            type="button"
+          >
+            <i class="fas fa-running me-2"></i>Activity
+            <span class="count-badge" id="activity-count">0</span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="awards-tab"
+            data-category="awards"
+            type="button"
+          >
+            <i class="fas fa-trophy me-2"></i>Awards
+            <span class="count-badge" id="awards-count">0</span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="exhibition-tab"
+            data-category="exhibition"
+            type="button"
+          >
+            <i class="fas fa-palette me-2"></i>Exhibition
+            <span class="count-badge" id="exhibition-count">0</span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="training-tab"
+            data-category="training"
+            type="button"
+          >
+            <i class="fas fa-graduation-cap me-2"></i>Training
+            <span class="count-badge" id="training-count">0</span>
+          </button>
+        </li>
+      </ul>
+
+      <!-- Loading Indicator -->
+      <div id="loadingIndicator" class="text-center py-4" style="display: none">
+        <div class="loading-spinner me-2"></div>
+        <span>Loading images...</span>
+      </div>
+
+      <!-- Image Gallery Grid -->
+      <div class="row" id="imageGallery">
+        <!-- Images will be populated dynamically -->
+      </div>
+
+      <!-- No Results Message -->
+      <div id="noResults" class="no-results" style="display: none">
+        <i class="fas fa-search"></i>
+        <h4>No images found</h4>
+        <p>Try selecting a different category or check back later.</p>
+      </div>
+    </div>
+    <!-- No Results Message -->
+    <div id="noResults" class="no-results" style="display: none">
+      <i class="fas fa-search"></i>
+      <h4>No images found</h4>
+      <p>Try selecting a different category.</p>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+      <div class="lightbox-counter">
+        <span id="currentImage">1</span> / <span id="totalImages">0</span>
+      </div>
+
+      <button class="lightbox-close" id="lightboxClose">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <button class="lightbox-nav lightbox-next" id="lightboxNext">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+      <div class="lightbox-content">
+        <div class="lightbox-image-container" id="lightboxImageContainer">
+          <img
+            src=""
+            alt=""
+            class="lightbox-display-image"
+            id="lightboxDisplayImage"
+            style="display: none"
+          />
+          <i
+            class="fas fa-image lightbox-placeholder-icon"
+            id="lightboxIcon"
+          ></i>
+        </div>
+        <div class="lightbox-info">
+          <!-- <div class="lightbox-title" id="lightboxTitle">Image Title</div> -->
+          <span class="lightbox-category" id="lightboxCategory">Category</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!--=====SOLUTION AREA END=======-->
+
+    <!--=====CTA AREA START=======-->
+
+<div class="bottom-circle mt-3">
+    <div class="cta2 cta-design">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 m-auto text-center">
+            <div class="heading2">
+              <h2 class="title tg-element-title" style="color: white !important; ">
+                We're Committed To Businesses
+              </h2>
+              <div class="space16"></div>
+              <p style="color: white !important;">
+                At TechXen IT Solutions, we're dedicated to delivering
+                innovative technology solutions tailored to meet the unique
+                needs of businesses like yours.
+              </p>
+
+              <div class="row">
+                <div class="col-lg-8 m-auto">
+                  <div class="subscribe-form">
+                    <form action="#">
+                      <input type="email" placeholder="Enter Your Email" />
+                      <div class="button">
+                        <button type="submit" class=" theme-btn2-submit">
+                          Subscribe
+                          <span class="arrow1"></span>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--===== FOOTER AREA START =======-->
+ <div class="footer1 _relative">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-12">
+            <div class="single-footer-items footer-logo-area">
+              <div class="footer-logo">
+                <a href="./index2.html"><img src="assets/img/logo/indi-logo.png" alt="" /></a>
+              </div>
+              <div class="space20"></div>
+              <div class="heading1">
+                <p>
+                  At IndiCorp IT Solutions, we're dedicated to delivering
+                  innovative technology solutions tailored to meet the unique
+                  needs of businesses like yours.
+                </p>
+              </div>
+              <ul class="social-icon">
+                <li>
+                  <a href="https://www.linkedin.com/company/indicorp-it-solutions-pvt-ltd/posts/?feedView=all"
+                    target="_blank">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://x.com/corp_indi" target="_blank">
+                    <i class="fa-brands fa-x-twitter"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.youtube.com/@IndiCorpITSolutionsPvtLtd" target="_blank">
+                    <i class="fa-brands fa-youtube"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.facebook.com/IndiCorpIT/" target="_blank">
+                    <i class="fa-brands fa-facebook"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/indicorpit/" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+
+          <div class="col-lg col-md-6 col-12">
+            <div class="single-footer-items">
+              <h3>Company</h3>
+
+              <ul class="menu-list">
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./service.html">Services</a></li>
+                <li><a href="./corporate-training.html">Corporate Tranning </a></li>
+                <li><a href="./gallery.html">Gallery </a></li>
+                <li><a href="./contact.html">Contact </a></li>
+                <li><a href="./career.html">Career </a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg col-md-6 col-12">
+            <div class="single-footer-items">
+              <h3>India Office</h3>
+
+              <div class="contact-box">
+                <div class="icon">
+                  <img src="assets/img/icons/footer1-icon1.png" alt="" />
+                </div>
+                <div class="pera">
+                  <a>+91 120 4732249</a>
+                </div>
+              </div>
+
+              <div class="contact-box">
+                <div class="icon">
+                  <img src="assets/img/icons/footer1-icon2.png" alt="" />
+                </div>
+                <div class="pera">
+                  <a>+91 837 782 5678</a>
+                </div>
+              </div>
+
+              <div class="contact-box">
+                <div class="icon">
+                  <img src="assets/img/icons/footer1-icon3.png" alt="" />
+                </div>
+                <div class="pera">
+                  <a>info@indicorpit.com</a>
+                </div>
+              </div>
+              <div class="contact-box">
+                <div class="icon">
+                  <i class="fas fa-map-marker-alt" style="margin-left: 5px; font-size: 20px;"></i>
+                </div>
+                <div class="pera">
+                  <a>
+                    <p> G - 5, Lower Ground,</p><br />
+                    <p>Sector - 63, NOIDA,</p> <br>
+                    <p>PIN: 201301, Uttar Pradesh, India</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 col-12">
+            <div class="single-footer-items">
+              <h3>Canada Office</h3>
+
+              <div class="contact-box">
+                <div class="icon">
+                  <img src="assets/img/icons/footer1-icon1.png" alt="" />
+                </div>
+                <div class="pera">
+                  <a >+1 647-345-9184</a>
+                </div>
+              </div>
+
+              <!-- <div class="contact-box">
+                  <div class="icon">
+                    <img src="assets/img/icons/footer1-icon2.png" alt="" />
+                  </div>
+                  <div class="pera">
+                    <a href="tel">+91 837 782 5678</a>
+                  </div>
+                </div> -->
+
+              <div class="contact-box">
+                <div class="icon">
+                  <img src="assets/img/icons/footer1-icon3.png" alt="" />
+                </div>
+                <div class="pera">
+                  <a >info@indicorpit.com</a>
+                </div>
+              </div>
+
+              <div class="contact-box">
+                <div class="icon">
+                  <i class="fas fa-map-marker-alt" style="margin-left: 5px; font-size: 20px;"></i>
+                </div>
+                <div class="pera">
+                  <a>
+                    <p>(C/O) Lynx IT Services</p>
+                    <br>
+                    <p>#1004/1638 Bloor St West</p><br />
+                    <p>
+                      Toronto, ONT, M6P0A6 Canada
+                    </p>
+
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright-area">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <div class="coppyright">
+                <p>
+                  Copyright @2024 IndiCorp IT Solution Pvt. Ltd. | All Rights
+                  Reserved
+                </p>
+              </div>
+            </div>
+            <!-- <div class="col-md-7">
+                <div class="coppyright right-area">
+                  <a href="#">Terms &amp; Conditions</a>
+                  <a href="#">Privacy Policy</a>
+                </div>
+              </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!--===== FOOTER AREA END =======-->
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/fontawesome.js"></script>
+    <script src="assets/js/jquery.countup.js"></script>
+    <script src="assets/js/mobile-menu.js"></script>
+    <script src="assets/js/jquery.magnific-popup.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/slick-slider.js"></script>
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollTrigger.min.js"></script>
+    <script src="assets/js/Splitetext.js"></script>
+    <script src="assets/js/text-animation.js"></script>
+    <script src="assets/js/SmoothScroll.js"></script>
+    <script src="assets/js/jquery.lineProgressbar.js"></script>
+    <script src="assets/js/ripple-btn.js"></script>
+    <script src="assets/js/main.js"></script>
+     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const tabs = document.querySelectorAll("[data-category]");
+        const imageGallery = document.getElementById("imageGallery");
+        const noResults = document.getElementById("noResults");
+        const loadingIndicator = document.getElementById("loadingIndicator");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxClose = document.getElementById("lightboxClose");
+        const lightboxPrev = document.getElementById("lightboxPrev");
+        const lightboxNext = document.getElementById("lightboxNext");
+        const currentImageSpan = document.getElementById("currentImage");
+        const totalImagesSpan = document.getElementById("totalImages");
+        // const lightboxTitle = document.getElementById("lightboxTitle");
+        const lightboxCategory = document.getElementById("lightboxCategory");
+        const lightboxImageContainer = document.getElementById(
+          "lightboxImageContainer"
+        );
+        const lightboxDisplayImage = document.getElementById(
+          "lightboxDisplayImage"
+        );
+        const lightboxIcon = document.getElementById("lightboxIcon");
+
+        let currentImageIndex = 0;
+        let visibleImages = [];
+        let imageDatabase = [];
+        let currentCategory = "all";
+
+        // Sample data (replace with your backend API)
+        const sampleData = {
+          success: true,
+          images: [
+            {
+              id: 1,
+              title: "Sports Day Marathon",
+              category: "activity",
+              imageUrl:
+                "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop&crop=center",
+              description: "Annual sports day marathon event",
+            },
+            {
+              id: 2,
+              title: "Swimming Competition",
+              category: "activity",
+              imageUrl:
+                "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=250&fit=crop&crop=center",
+              description: "Inter-school swimming championship",
+            },
+            {
+              id: 3,
+              title: "Excellence Award 2024",
+              category: "awards",
+              imageUrl:
+                "https://images.unsplash.com/photo-1567427018141-0584cfcbf1b8?w=400&h=250&fit=crop&crop=center",
+              description: "Outstanding performance recognition",
+            },
+            {
+              id: 4,
+              title: "Art Exhibition",
+              category: "exhibition",
+              imageUrl:
+                "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=400&h=250&fit=crop&crop=center",
+              description: "Contemporary art showcase",
+            },
+            {
+              id: 5,
+              title: "Professional Workshop",
+              category: "training",
+              imageUrl:
+                "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=400&h=250&fit=crop&crop=center",
+              description: "Leadership development workshop",
+            },
+            {
+              id: 6,
+              title: "Team Building Exercise",
+              category: "training",
+              imageUrl: null, // No image - will show placeholder
+              description: "Team collaboration activities",
+            },
+          ],
+          total: 6,
+        };
+
+        // Function to load images from backend
+        async function loadImagesFromBackend(
+          category = "all",
+          showLoader = true
+        ) {
+          try {
+            if (showLoader) {
+              showLoading(true);
+            }
+
+            // Replace this with your actual API endpoint
+            // const response = await fetch(`/api/gallery/images${category !== 'all' ? `?category=${category}` : ''}`, {
+            //     method: 'GET',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         // 'Authorization': `Bearer ${token}` // Add if needed
+            //     }
+            // });
+            // const data = await response.json();
+
+            // For demo purposes, using sample data with reduced delay for filtering
+            if (showLoader) {
+              await new Promise((resolve) => setTimeout(resolve, 500)); // Reduced from 1000ms
+            }
+
+            const data = {
+              ...sampleData,
+              images: sampleData.images, // Always return all images, filter on client side
+            };
+
+            if (showLoader) {
+              showLoading(false);
+            }
+            return data;
+          } catch (error) {
+            console.error("Error loading images from backend:", error);
+            showLoading(false);
+            return null;
+          }
+        }
+
+        // Function to show/hide loading indicator
+        function showLoading(show) {
+          loadingIndicator.style.display = show ? "block" : "none";
+        }
+
+        // Function to create image card HTML
+        function createImageCard(imageData, index) {
+          const hasImage = imageData.imageUrl;
+          const categoryIcons = {
+            activity: "fas fa-running",
+            awards: "fas fa-trophy",
+            exhibition: "fas fa-palette",
+            training: "fas fa-graduation-cap",
+          };
+
+          return `
+      <div class="col-lg-3 col-md-4 col-sm-6 image-item" data-category="${
+        imageData.category
+      }" data-index="${index}">
+        <div class="image-card">
+          ${
+            hasImage
+              ? `<img src="${imageData.imageUrl}" alt="${imageData.title}" class="gallery-image">`
+              : `<div class="image-placeholder">
+                <i class="${
+                  categoryIcons[imageData.category] || "fas fa-image"
+                }"></i>
+              </div>`
+          }
+          <div class="image-info">
+            <span class="image-category">${
+              imageData.category.charAt(0).toUpperCase() +
+              imageData.category.slice(1)
+            }</span>
+          </div>
+        </div>
+      </div>
+    `;
+        }
+
+        // Function to render gallery
+        function renderGallery(data, filterCategory = "all") {
+          if (!data || !data.images || data.images.length === 0) {
+            imageGallery.innerHTML = "";
+            noResults.style.display = "block";
+            updateCategoryCounts([]);
+            return;
+          }
+
+          imageDatabase = data.images;
+          noResults.style.display = "none";
+
+          const galleryHTML = data.images
+            .map((image, index) => createImageCard(image, index))
+            .join("");
+          imageGallery.innerHTML = galleryHTML;
+
+          // Add click events to new cards
+          addImageClickEvents();
+          updateCategoryCounts(imageDatabase);
+
+          // Apply the current filter
+          filterImages(filterCategory);
+        }
+
+        // Function to add click events to image cards
+        function addImageClickEvents() {
+          const imageCards = document.querySelectorAll(".image-card");
+          imageCards.forEach((card) => {
+            const imageItem = card.closest(".image-item");
+            const index = parseInt(imageItem.getAttribute("data-index"));
+            card.addEventListener("click", () => openLightbox(index));
+          });
+        }
+
+        // Function to update category counts
+        function updateCategoryCounts(images) {
+          const counts = {
+            all: images.length,
+            activity: images.filter((img) => img.category === "activity")
+              .length,
+            awards: images.filter((img) => img.category === "awards").length,
+            exhibition: images.filter((img) => img.category === "exhibition")
+              .length,
+            training: images.filter((img) => img.category === "training")
+              .length,
+          };
+
+          Object.keys(counts).forEach((category) => {
+            const countEl = document.getElementById(`${category}-count`);
+            if (countEl) {
+              countEl.textContent = counts[category];
+            }
+          });
+        }
+
+        // Function to filter images
+        function filterImages(category) {
+          const imageItems = document.querySelectorAll(".image-item");
+          let visibleCount = 0;
+          visibleImages = [];
+          currentCategory = category;
+
+          imageItems.forEach((item, index) => {
+            const itemCategory = item.getAttribute("data-category");
+            const actualIndex = parseInt(item.getAttribute("data-index"));
+
+            // Reset animation
+            item.style.animationDelay = "0s";
+            item.classList.remove("hidden");
+
+            if (category === "all" || itemCategory === category) {
+              item.style.display = "block";
+              item.style.animationDelay = visibleCount * 0.1 + "s";
+              visibleImages.push(actualIndex);
+              visibleCount++;
+            } else {
+              item.style.display = "none";
+            }
+          });
+
+          // Update total count display
+          if (totalImagesSpan) {
+            totalImagesSpan.textContent = visibleCount;
+          }
+
+          // Show/hide no results message
+          noResults.style.display = visibleCount === 0 ? "block" : "none";
+        }
+
+        // Lightbox functions
+        function openLightbox(imageIndex) {
+          const actualIndex = visibleImages.indexOf(imageIndex);
+          if (actualIndex !== -1) {
+            currentImageIndex = actualIndex;
+            updateLightboxContent();
+            lightbox.classList.add("active");
+            document.body.style.overflow = "hidden";
+          }
+        }
+
+        function updateLightboxContent() {
+          const actualImageIndex = visibleImages[currentImageIndex];
+          const data = imageDatabase[actualImageIndex];
+
+          if (!data) return;
+
+          // lightboxTitle.textContent = data.title;
+          lightboxCategory.textContent =
+            data.category.charAt(0).toUpperCase() + data.category.slice(1);
+          currentImageSpan.textContent = currentImageIndex + 1;
+
+          if (data.imageUrl) {
+            lightboxDisplayImage.src = data.imageUrl;
+            lightboxDisplayImage.alt = data.title;
+            lightboxDisplayImage.style.display = "block";
+            lightboxIcon.style.display = "none";
+          } else {
+            lightboxDisplayImage.style.display = "none";
+            lightboxIcon.style.display = "block";
+
+            const categoryIcons = {
+              activity: "fas fa-running",
+              awards: "fas fa-trophy",
+              exhibition: "fas fa-palette",
+              training: "fas fa-graduation-cap",
+            };
+            lightboxIcon.className = `${
+              categoryIcons[data.category] || "fas fa-image"
+            } lightbox-placeholder-icon`;
+          }
+        }
+
+        function closeLightbox() {
+          lightbox.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        function nextImage() {
+          if (currentImageIndex < visibleImages.length - 1) {
+            currentImageIndex++;
+            updateLightboxContent();
+          }
+        }
+
+        function prevImage() {
+          if (currentImageIndex > 0) {
+            currentImageIndex--;
+            updateLightboxContent();
+          }
+        }
+
+        // Event listeners
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", async function (e) {
+            e.preventDefault();
+
+            // Remove active class from all tabs
+            tabs.forEach((t) => t.classList.remove("active"));
+            this.classList.add("active");
+
+            const category = this.getAttribute("data-category");
+
+            // If we already have images loaded, just filter them
+            if (imageDatabase.length > 0) {
+              filterImages(category);
+            } else {
+              // Load images if not already loaded
+              const data = await loadImagesFromBackend("all", true);
+              if (data) {
+                renderGallery(data, category);
+              }
+            }
+          });
+        });
+
+        // Lightbox event listeners
+        if (lightboxClose)
+          lightboxClose.addEventListener("click", closeLightbox);
+        if (lightboxNext) lightboxNext.addEventListener("click", nextImage);
+        if (lightboxPrev) lightboxPrev.addEventListener("click", prevImage);
+
+        if (lightbox) {
+          lightbox.addEventListener("click", function (e) {
+            if (e.target === lightbox) closeLightbox();
+          });
+        }
+
+        // Keyboard navigation
+        document.addEventListener("keydown", function (e) {
+          if (lightbox && lightbox.classList.contains("active")) {
+            switch (e.key) {
+              case "Escape":
+                closeLightbox();
+                break;
+              case "ArrowLeft":
+                prevImage();
+                break;
+              case "ArrowRight":
+                nextImage();
+                break;
+            }
+          }
+        });
+
+        // Initialize gallery
+        async function initializeGallery() {
+          const initialData = await loadImagesFromBackend("all", true);
+          if (initialData) {
+            renderGallery(initialData, "all");
+          }
+        }
+
+        // Public API
+        window.GalleryAPI = {
+          refresh: initializeGallery,
+          loadCategory: async (category) => {
+            if (imageDatabase.length > 0) {
+              filterImages(category);
+            } else {
+              const data = await loadImagesFromBackend("all", true);
+              if (data) renderGallery(data, category);
+            }
+          },
+          getCurrentCategory: () => currentCategory,
+          getImageCount: (category = null) => {
+            if (!category) return imageDatabase.length;
+            return category === "all"
+              ? imageDatabase.length
+              : imageDatabase.filter((img) => img.category === category).length;
+          },
+        };
+
+        // Start the gallery
+        initializeGallery();
+      });
+    </script>
+  </body>
+</html>

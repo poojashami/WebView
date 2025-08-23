@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Trending Corporate Trainings</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .main-title {
+        color: #2c3e50;
+        font-weight: 700;
+        font-size: 2.5rem;
+        text-align: center;
+        margin: 30px 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .content-wrapper {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        overflow: hidden;
+        margin: 0 20px;
+      }
+
+      .section-header {
+        background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+        color: white;
+        padding: 15px 20px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-align: center;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .main-menu {
+        background: rgba(255, 255, 255, 0.1);
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        height: 600px;
+        overflow-y: auto;
+      }
+
+      .submenu-section {
+        background: rgba(255, 255, 255, 0.05);
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        height: 600px;
+        overflow-y: auto;
+      }
+
+      .cards-section {
+        background: white;
+        height: 600px;
+        overflow-y: auto;
+        padding: 20px;
+      }
+
+      .menu-item {
+        display: block;
+        width: 100%;
+        padding: 15px 20px;
+        border: none;
+        background: transparent;
+        color: #2c3e50;
+        text-align: left;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+      }
+
+      .menu-item:hover {
+        background: rgba(74, 144, 226, 0.1);
+        color: #357abd;
+        padding-left: 25px;
+      }
+
+      .menu-item.active {
+        background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+        color: white;
+        font-weight: 600;
+        border-left: 4px solid #2c5282;
+      }
+
+      .submenu-item {
+        display: block;
+        width: 100%;
+        padding: 12px 20px;
+        border: none;
+        background: transparent;
+        color: #2c3e50;
+        text-align: left;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+      }
+
+      .submenu-item:hover {
+        background: rgba(74, 144, 226, 0.1);
+        color: #357abd;
+        padding-left: 25px;
+      }
+
+      .submenu-item.active {
+        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        color: white;
+        font-weight: 600;
+        border-left: 4px solid #a93226;
+      }
+
+      .training-card {
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .training-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .training-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .training-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: white;
+        margin-bottom: 12px;
+      }
+
+      .card-title {
+        font-weight: 600;
+        color: #2c3e50;
+        font-size: 0.95rem;
+        line-height: 1.3;
+      }
+
+      /* Icon colors */
+      .icon-blue {
+        background: linear-gradient(135deg, #3498db, #2980b9);
+      }
+      .icon-green {
+        background: linear-gradient(135deg, #27ae60, #229954);
+      }
+      .icon-orange {
+        background: linear-gradient(135deg, #f39c12, #e67e22);
+      }
+      .icon-red {
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
+      }
+      .icon-purple {
+        background: linear-gradient(135deg, #9b59b6, #8e44ad);
+      }
+      .icon-teal {
+        background: linear-gradient(135deg, #1abc9c, #16a085);
+      }
+      .icon-pink {
+        background: linear-gradient(135deg, #e91e63, #ad1457);
+      }
+      .icon-yellow {
+        background: linear-gradient(135deg, #f1c40f, #f39c12);
+      }
+      .icon-indigo {
+        background: linear-gradient(135deg, #6c5ce7, #5f3dc4);
+      }
+      .icon-gray {
+        background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+      }
+      .icon-brown {
+        background: linear-gradient(135deg, #8b4513, #a0522d);
+      }
+      .icon-cyan {
+        background: linear-gradient(135deg, #17a2b8, #138496);
+      }
+
+      /* Animations */
+      .fade-in {
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Scrollbar styling */
+      .main-menu::-webkit-scrollbar,
+      .submenu-section::-webkit-scrollbar,
+      .cards-section::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .main-menu::-webkit-scrollbar-track,
+      .submenu-section::-webkit-scrollbar-track,
+      .cards-section::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      .main-menu::-webkit-scrollbar-thumb,
+      .submenu-section::-webkit-scrollbar-thumb,
+      .cards-section::-webkit-scrollbar-thumb {
+        background: rgba(74, 144, 226, 0.5);
+        border-radius: 3px;
+      }
+
+      @media (max-width: 768px) {
+        .main-title {
+          font-size: 2rem;
+        }
+
+        .content-wrapper {
+          margin: 0 10px;
+        }
+
+        .main-menu,
+        .submenu-section,
+        .cards-section {
+          height: 400px;
+        }
+
+        .training-card {
+          height: 120px;
+          margin-bottom: 15px;
+        }
+
+        .card-icon {
+          width: 40px;
+          height: 40px;
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1 class="main-title">Top Trending Corporate Trainings</h1>
+
+      <div class="content-wrapper">
+        <div class="row g-0">
+          <!-- Main Menu Section -->
+          <div class="col-lg-2 col-md-2">
+            <div class="section-header">
+              <i class="fas fa-list me-2"></i>Training Categories
+            </div>
+            <div class="main-menu">
+              <button class="menu-item active" data-category="cloud">
+                <i class="fas fa-cloud me-2"></i>
+                Cloud and DevOps Training
+              </button>
+              <button class="menu-item" data-category="sap">
+                <i class="fas fa-cogs me-2"></i>
+                SAP & SAP S/4 HANA Trainings
+              </button>
+              <button class="menu-item" data-category="ai">
+                <i class="fas fa-robot me-2"></i>
+                AI & Machine Learning Trainings
+              </button>
+              <button class="menu-item" data-category="software">
+                <i class="fas fa-code me-2"></i>
+                Software Development & Database
+              </button>
+              <button class="menu-item" data-category="management">
+                <i class="fas fa-users me-2"></i>
+                Management Trainings
+              </button>
+              <button class="menu-item" data-category="softskills">
+                <i class="fas fa-lightbulb me-2"></i>
+                Softskills Trainings
+              </button>
+            </div>
+          </div>
+
+          <!-- Submenu Section -->
+          <div class="col-lg-2 col-md-2">
+            <div class="section-header">
+              <i class="fas fa-layer-group me-2"></i>Specializations
+            </div>
+            <div class="submenu-section">
+              <div id="cloud-submenu" class="submenu-content">
+                <button class="submenu-item active" data-subcategory="aws">
+                  <i class="fab fa-aws me-2"></i>
+                  Amazon Web Services (AWS)
+                </button>
+                <button class="submenu-item" data-subcategory="azure">
+                  <i class="fab fa-microsoft me-2"></i>
+                  Microsoft Azure
+                </button>
+                <button class="submenu-item" data-subcategory="gcp">
+                  <i class="fab fa-google me-2"></i>
+                  Google Cloud Platform
+                </button>
+                <button class="submenu-item" data-subcategory="devops">
+                  <i class="fas fa-tools me-2"></i>
+                  DevOps Tools & Practices
+                </button>
+              </div>
+
+              <div
+                id="sap-submenu"
+                class="submenu-content"
+                style="display: none"
+              >
+                <button class="submenu-item" data-subcategory="sap-functional">
+                  <i class="fas fa-puzzle-piece me-2"></i>
+                  SAP Functional Modules
+                </button>
+                <button class="submenu-item" data-subcategory="sap-technical">
+                  <i class="fas fa-code me-2"></i>
+                  SAP Technical Modules
+                </button>
+                <button class="submenu-item" data-subcategory="sap-s4hana">
+                  <i class="fas fa-database me-2"></i>
+                  SAP S/4 HANA Modules
+                </button>
+              </div>
+
+              <div
+                id="ai-submenu"
+                class="submenu-content"
+                style="display: none"
+              >
+                <button
+                  class="submenu-item"
+                  data-subcategory="machine-learning"
+                >
+                  <i class="fas fa-brain me-2"></i>
+                  Machine Learning Fundamentals
+                </button>
+                <button class="submenu-item" data-subcategory="deep-learning">
+                  <i class="fas fa-network-wired me-2"></i>
+                  Deep Learning & Neural Networks
+                </button>
+                <button class="submenu-item" data-subcategory="nlp">
+                  <i class="fas fa-comments me-2"></i>
+                  Natural Language Processing
+                </button>
+                <button class="submenu-item" data-subcategory="computer-vision">
+                  <i class="fas fa-eye me-2"></i>
+                  Computer Vision
+                </button>
+              </div>
+
+              <div
+                id="software-submenu"
+                class="submenu-content"
+                style="display: none"
+              >
+                <button
+                  class="submenu-item"
+                  data-subcategory="frontend-backend"
+                >
+                  <i class="fas fa-layer-group me-2"></i>
+                  Frontend / Backend Technologies
+                </button>
+                <button
+                  class="submenu-item"
+                  data-subcategory="mobile-development"
+                >
+                  <i class="fas fa-mobile-alt me-2"></i>
+                  Mobile App Development
+                </button>
+                <button class="submenu-item" data-subcategory="database">
+                  <i class="fas fa-database me-2"></i>
+                  Database Technologies
+                </button>
+                <button class="submenu-item" data-subcategory="testing">
+                  <i class="fas fa-bug me-2"></i>
+                  Software Testing
+                </button>
+              </div>
+
+              <div
+                id="management-submenu"
+                class="submenu-content"
+                style="display: none"
+              >
+                <button
+                  class="submenu-item"
+                  data-subcategory="project-management"
+                >
+                  <i class="fas fa-tasks me-2"></i>
+                  Project Management
+                </button>
+                <button class="submenu-item" data-subcategory="agile-scrum">
+                  <i class="fas fa-sync me-2"></i>
+                  Agile & Scrum Methodologies
+                </button>
+                <button class="submenu-item" data-subcategory="leadership">
+                  <i class="fas fa-crown me-2"></i>
+                  Leadership Development
+                </button>
+                <button class="submenu-item" data-subcategory="team-management">
+                  <i class="fas fa-people-arrows me-2"></i>
+                  Team Management
+                </button>
+              </div>
+
+              <div
+                id="softskills-submenu"
+                class="submenu-content"
+                style="display: none"
+              >
+                <button class="submenu-item" data-subcategory="communication">
+                  <i class="fas fa-microphone me-2"></i>
+                  Communication Skills
+                </button>
+                <button class="submenu-item" data-subcategory="presentation">
+                  <i class="fas fa-presentation me-2"></i>
+                  Presentation Skills
+                </button>
+                <button class="submenu-item" data-subcategory="time-management">
+                  <i class="fas fa-clock me-2"></i>
+                  Time Management
+                </button>
+                <button class="submenu-item" data-subcategory="problem-solving">
+                  <i class="fas fa-puzzle-piece me-2"></i>
+                  Problem Solving
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cards Section -->
+          <div class="col-lg-8 col-md-8">
+            <div class="section-header">
+              <i class="fas fa-graduation-cap me-2"></i>Available Courses
+            </div>
+            <div class="cards-section">
+              <div class="row" id="cards-container">
+                <!-- Default AWS Cards -->
+                <div class="col-md-4 col-sm-6 mb-3">
+                  <div class="training-card fade-in">
+                    <div class="card-icon icon-orange">
+                      <i class="fab fa-aws"></i>
+                    </div>
+                    <div class="card-title">AWS Cloud Practitioner</div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-3">
+                  <div class="training-card fade-in">
+                    <div class="card-icon icon-blue">
+                      <i class="fas fa-server"></i>
+                    </div>
+                    <div class="card-title">AWS Solutions Architect</div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-3">
+                  <div class="training-card fade-in">
+                    <div class="card-icon icon-green">
+                      <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="card-title">AWS DevOps Engineer</div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-3">
+                  <div class="training-card fade-in">
+                    <div class="card-icon icon-red">
+                      <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="card-title">AWS Security Specialty</div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-3">
+                  <div class="training-card fade-in">
+                    <div class="card-icon icon-purple">
+                      <i class="fas fa-database"></i>
+                    </div>
+                    <div class="card-title">AWS Database Specialty</div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-3">
+                  <div class="training-card fade-in">
+                    <div class="card-icon icon-teal">
+                      <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="card-title">AWS Networking Specialty</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Course data for different categories and subcategories
+      const courseData = {
+        cloud: {
+          aws: [
+            {
+              title: "AWS Cloud Practitioner",
+              icon: "fab fa-aws",
+              color: "icon-orange",
+            },
+            {
+              title: "AWS Solutions Architect",
+              icon: "fas fa-server",
+              color: "icon-blue",
+            },
+            {
+              title: "AWS DevOps Engineer",
+              icon: "fas fa-cogs",
+              color: "icon-green",
+            },
+            {
+              title: "AWS Security Specialty",
+              icon: "fas fa-shield-alt",
+              color: "icon-red",
+            },
+            {
+              title: "AWS Database Specialty",
+              icon: "fas fa-database",
+              color: "icon-purple",
+            },
+            {
+              title: "AWS Networking Specialty",
+              icon: "fas fa-network-wired",
+              color: "icon-teal",
+            },
+          ],
+          azure: [
+            {
+              title: "Azure Fundamentals",
+              icon: "fab fa-microsoft",
+              color: "icon-blue",
+            },
+            {
+              title: "Azure Administrator",
+              icon: "fas fa-users-cog",
+              color: "icon-green",
+            },
+            {
+              title: "Azure Developer",
+              icon: "fas fa-code",
+              color: "icon-purple",
+            },
+            {
+              title: "Azure Solutions Architect",
+              icon: "fas fa-building",
+              color: "icon-orange",
+            },
+            {
+              title: "Azure Security Engineer",
+              icon: "fas fa-lock",
+              color: "icon-red",
+            },
+            {
+              title: "Azure Data Engineer",
+              icon: "fas fa-chart-bar",
+              color: "icon-teal",
+            },
+          ],
+          gcp: [
+            {
+              title: "Google Cloud Associate",
+              icon: "fab fa-google",
+              color: "icon-red",
+            },
+            {
+              title: "GCP Professional Architect",
+              icon: "fas fa-sitemap",
+              color: "icon-blue",
+            },
+            {
+              title: "GCP Data Engineer",
+              icon: "fas fa-database",
+              color: "icon-green",
+            },
+            {
+              title: "GCP ML Engineer",
+              icon: "fas fa-robot",
+              color: "icon-purple",
+            },
+            {
+              title: "GCP Security Engineer",
+              icon: "fas fa-shield-alt",
+              color: "icon-orange",
+            },
+            {
+              title: "GCP DevOps Engineer",
+              icon: "fas fa-tools",
+              color: "icon-teal",
+            },
+          ],
+          devops: [
+            {
+              title: "Docker & Kubernetes",
+              icon: "fab fa-docker",
+              color: "icon-blue",
+            },
+            {
+              title: "Jenkins CI/CD",
+              icon: "fas fa-cogs",
+              color: "icon-green",
+            },
+            {
+              title: "Terraform Infrastructure",
+              icon: "fas fa-layer-group",
+              color: "icon-purple",
+            },
+            {
+              title: "Ansible Automation",
+              icon: "fas fa-magic",
+              color: "icon-red",
+            },
+            {
+              title: "GitLab DevOps",
+              icon: "fab fa-gitlab",
+              color: "icon-orange",
+            },
+            {
+              title: "Monitoring & Logging",
+              icon: "fas fa-chart-line",
+              color: "icon-teal",
+            },
+          ],
+        },
+        sap: {
+          "sap-functional": [
+            {
+              title: "SAP FI (Finance)",
+              icon: "fas fa-dollar-sign",
+              color: "icon-green",
+            },
+            {
+              title: "SAP CO (Controlling)",
+              icon: "fas fa-chart-line",
+              color: "icon-blue",
+            },
+            {
+              title: "SAP MM (Materials)",
+              icon: "fas fa-boxes",
+              color: "icon-orange",
+            },
+            {
+              title: "SAP SD (Sales)",
+              icon: "fas fa-shopping-cart",
+              color: "icon-purple",
+            },
+            {
+              title: "SAP PP (Production)",
+              icon: "fas fa-industry",
+              color: "icon-red",
+            },
+            { title: "SAP HRM", icon: "fas fa-users", color: "icon-teal" },
+          ],
+          "sap-technical": [
+            { title: "SAP ABAP", icon: "fas fa-code", color: "icon-blue" },
+            { title: "SAP Basis", icon: "fas fa-server", color: "icon-green" },
+            { title: "SAP HANA", icon: "fas fa-database", color: "icon-red" },
+            {
+              title: "SAP PI/PO",
+              icon: "fas fa-exchange-alt",
+              color: "icon-purple",
+            },
+            {
+              title: "SAP Fiori",
+              icon: "fas fa-mobile-alt",
+              color: "icon-orange",
+            },
+            {
+              title: "SAP BW/BI",
+              icon: "fas fa-chart-bar",
+              color: "icon-teal",
+            },
+          ],
+          "sap-s4hana": [
+            {
+              title: "S/4HANA Finance",
+              icon: "fas fa-calculator",
+              color: "icon-green",
+            },
+            {
+              title: "S/4HANA Logistics",
+              icon: "fas fa-truck",
+              color: "icon-blue",
+            },
+            {
+              title: "S/4HANA Manufacturing",
+              icon: "fas fa-cogs",
+              color: "icon-orange",
+            },
+            {
+              title: "S/4HANA Asset Management",
+              icon: "fas fa-building",
+              color: "icon-purple",
+            },
+            {
+              title: "S/4HANA Analytics",
+              icon: "fas fa-chart-pie",
+              color: "icon-red",
+            },
+            {
+              title: "S/4HANA Migration",
+              icon: "fas fa-arrows-alt",
+              color: "icon-teal",
+            },
+          ],
+        },
+        software: {
+          "frontend-backend": [
+            {
+              title: "Java Full Stack",
+              icon: "fab fa-java",
+              color: "icon-brown",
+            },
+            { title: "C# / .NET", icon: "fas fa-hashtag", color: "icon-blue" },
+            {
+              title: "Python Django",
+              icon: "fab fa-python",
+              color: "icon-green",
+            },
+            { title: "Node.js", icon: "fab fa-node-js", color: "icon-green" },
+            { title: "React.js", icon: "fab fa-react", color: "icon-cyan" },
+            { title: "Angular", icon: "fab fa-angular", color: "icon-red" },
+          ],
+          "mobile-development": [
+            {
+              title: "Android Development",
+              icon: "fab fa-android",
+              color: "icon-green",
+            },
+            {
+              title: "iOS Development",
+              icon: "fab fa-apple",
+              color: "icon-gray",
+            },
+            { title: "React Native", icon: "fab fa-react", color: "icon-cyan" },
+            { title: "Flutter", icon: "fas fa-mobile-alt", color: "icon-blue" },
+            { title: "Kotlin", icon: "fas fa-code", color: "icon-purple" },
+            { title: "Swift", icon: "fab fa-swift", color: "icon-orange" },
+          ],
+          database: [
+            { title: "MySQL", icon: "fas fa-database", color: "icon-blue" },
+            {
+              title: "PostgreSQL",
+              icon: "fas fa-elephant",
+              color: "icon-indigo",
+            },
+            { title: "MongoDB", icon: "fas fa-leaf", color: "icon-green" },
+            {
+              title: "Oracle Database",
+              icon: "fas fa-database",
+              color: "icon-red",
+            },
+            {
+              title: "SQL Server",
+              icon: "fab fa-microsoft",
+              color: "icon-blue",
+            },
+            { title: "Redis", icon: "fas fa-memory", color: "icon-red" },
+          ],
+          testing: [
+            {
+              title: "Selenium Testing",
+              icon: "fas fa-bug",
+              color: "icon-green",
+            },
+            {
+              title: "Cypress Testing",
+              icon: "fas fa-vial",
+              color: "icon-blue",
+            },
+            { title: "API Testing", icon: "fas fa-plug", color: "icon-purple" },
+            {
+              title: "Performance Testing",
+              icon: "fas fa-tachometer-alt",
+              color: "icon-orange",
+            },
+            {
+              title: "Mobile Testing",
+              icon: "fas fa-mobile-alt",
+              color: "icon-teal",
+            },
+            {
+              title: "Test Automation",
+              icon: "fas fa-robot",
+              color: "icon-red",
+            },
+          ],
+        },
+      };
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Menu item click handler
+        document.querySelectorAll(".menu-item").forEach((item) => {
+          item.addEventListener("click", function () {
+            // Update active menu item
+            document
+              .querySelectorAll(".menu-item")
+              .forEach((mi) => mi.classList.remove("active"));
+            this.classList.add("active");
+
+            // Get category and show corresponding submenu
+            const category = this.getAttribute("data-category");
+            showSubmenu(category);
+
+            // Load default subcategory for this category
+            const defaultSubcategory = getDefaultSubcategory(category);
+            if (defaultSubcategory) {
+              loadCards(category, defaultSubcategory);
+
+              // Set active subcategory
+              document
+                .querySelectorAll(".submenu-item")
+                .forEach((si) => si.classList.remove("active"));
+              document
+                .querySelector(`[data-subcategory="${defaultSubcategory}"]`)
+                ?.classList.add("active");
+            }
+          });
+        });
+
+        // Submenu item click handler
+        document.querySelectorAll(".submenu-item").forEach((item) => {
+          item.addEventListener("click", function () {
+            // Update active submenu item
+            document
+              .querySelectorAll(".submenu-item")
+              .forEach((si) => si.classList.remove("active"));
+            this.classList.add("active");
+
+            // Get category and subcategory
+            const subcategory = this.getAttribute("data-subcategory");
+            const category = getCurrentCategory();
+
+            // Load cards for this subcategory
+            loadCards(category, subcategory);
+          });
+        });
+      });
+
+      function showSubmenu(category) {
+        // Hide all submenus
+        document.querySelectorAll(".submenu-content").forEach((menu) => {
+          menu.style.display = "none";
+        });
+
+        // Show selected submenu
+        const submenu = document.getElementById(`${category}-submenu`);
+        if (submenu) {
+          submenu.style.display = "block";
+
+          // Set first item as active
+          const firstItem = submenu.querySelector(".submenu-item");
+          if (firstItem) {
+            document
+              .querySelectorAll(".submenu-item")
+              .forEach((si) => si.classList.remove("active"));
+            firstItem.classList.add("active");
+          }
+        }
+      }
+
+      function getCurrentCategory() {
+        const activeMenuItem = document.querySelector(".menu-item.active");
+        return activeMenuItem
+          ? activeMenuItem.getAttribute("data-category")
+          : "cloud";
+      }
+
+      function getDefaultSubcategory(category) {
+        const defaults = {
+          cloud: "aws",
+          sap: "sap-functional",
+          ai: "machine-learning",
+          software: "frontend-backend",
+          management: "project-management",
+          softskills: "communication",
+        };
+        return defaults[category];
+      }
+
+      function loadCards(category, subcategory) {
+        const container = document.getElementById("cards-container");
+        const cards = courseData[category]?.[subcategory] || [];
+
+        // Clear existing cards
+        container.innerHTML = "";
+
+        // Create new cards
+        cards.forEach((card, index) => {
+          const cardHtml = `
+                    <div class="col-md-4 col-sm-6 mb-3">
+                        <div class="training-card fade-in" style="animation-delay: ${
+                          index * 0.1
+                        }s">
+                            <div class="card-icon ${card.color}">
+                                <i class="${card.icon}"></i>
+                            </div>
+                            <div class="card-title">${card.title}</div>
+                        </div>
+                    </div>
+                `;
+          container.insertAdjacentHTML("beforeend", cardHtml);
+        });
+
+        // Add click handlers to new cards
+        container.querySelectorAll(".training-card").forEach((card) => {
+          card.addEventListener("click", function () {
+            const title = this.querySelector(".card-title").textContent;
+            console.log("Selected course:", title);
+            // Add your click handling logic here
+          });
+        });
+      }
+
+      // Add more course data for AI and Management categories
+      courseData.ai = {
+        "machine-learning": [
+          {
+            title: "Machine Learning Basics",
+            icon: "fas fa-brain",
+            color: "icon-blue",
+          },
+          {
+            title: "Supervised Learning",
+            icon: "fas fa-chart-line",
+            color: "icon-green",
+          },
+          {
+            title: "Unsupervised Learning",
+            icon: "fas fa-project-diagram",
+            color: "icon-purple",
+          },
+          {
+            title: "Reinforcement Learning",
+            icon: "fas fa-gamepad",
+            color: "icon-orange",
+          },
+          {
+            title: "Feature Engineering",
+            icon: "fas fa-cogs",
+            color: "icon-teal",
+          },
+          {
+            title: "Model Evaluation",
+            icon: "fas fa-check-circle",
+            color: "icon-red",
+          },
+        ],
+        "deep-learning": [
+          {
+            title: "Neural Networks",
+            icon: "fas fa-network-wired",
+            color: "icon-purple",
+          },
+          {
+            title: "Convolutional Neural Networks",
+            icon: "fas fa-layer-group",
+            color: "icon-blue",
+          },
+          {
+            title: "Recurrent Neural Networks",
+            icon: "fas fa-sync",
+            color: "icon-green",
+          },
+          { title: "LSTM & GRU", icon: "fas fa-memory", color: "icon-orange" },
+          {
+            title: "Transformers",
+            icon: "fas fa-exchange-alt",
+            color: "icon-red",
+          },
+          { title: "GANs", icon: "fas fa-magic", color: "icon-teal" },
+        ],
+        nlp: [
+          {
+            title: "Text Processing",
+            icon: "fas fa-file-alt",
+            color: "icon-blue",
+          },
+          {
+            title: "Sentiment Analysis",
+            icon: "fas fa-smile",
+            color: "icon-green",
+          },
+          {
+            title: "Named Entity Recognition",
+            icon: "fas fa-tags",
+            color: "icon-purple",
+          },
+          {
+            title: "Language Models",
+            icon: "fas fa-language",
+            color: "icon-orange",
+          },
+          {
+            title: "Chatbot Development",
+            icon: "fas fa-robot",
+            color: "icon-teal",
+          },
+          {
+            title: "Text Summarization",
+            icon: "fas fa-compress",
+            color: "icon-red",
+          },
+        ],
+        "computer-vision": [
+          {
+            title: "Image Processing",
+            icon: "fas fa-image",
+            color: "icon-blue",
+          },
+          {
+            title: "Object Detection",
+            icon: "fas fa-search",
+            color: "icon-green",
+          },
+          {
+            title: "Facial Recognition",
+            icon: "fas fa-user-check",
+            color: "icon-purple",
+          },
+          {
+            title: "Image Classification",
+            icon: "fas fa-tags",
+            color: "icon-orange",
+          },
+          { title: "Video Analysis", icon: "fas fa-video", color: "icon-red" },
+          {
+            title: "Medical Imaging",
+            icon: "fas fa-x-ray",
+            color: "icon-teal",
+          },
+        ],
+      };
+
+      courseData.management = {
+        "project-management": [
+          {
+            title: "PMP Certification",
+            icon: "fas fa-certificate",
+            color: "icon-blue",
+          },
+          {
+            title: "Agile Project Management",
+            icon: "fas fa-sync",
+            color: "icon-green",
+          },
+          {
+            title: "Risk Management",
+            icon: "fas fa-shield-alt",
+            color: "icon-red",
+          },
+          {
+            title: "Project Planning",
+            icon: "fas fa-calendar-alt",
+            color: "icon-purple",
+          },
+          {
+            title: "Stakeholder Management",
+            icon: "fas fa-users",
+            color: "icon-orange",
+          },
+          {
+            title: "Quality Management",
+            icon: "fas fa-check-double",
+            color: "icon-teal",
+          },
+        ],
+        "agile-scrum": [
+          { title: "Scrum Master", icon: "fas fa-crown", color: "icon-purple" },
+          {
+            title: "Product Owner",
+            icon: "fas fa-user-tie",
+            color: "icon-blue",
+          },
+          {
+            title: "Agile Fundamentals",
+            icon: "fas fa-forward",
+            color: "icon-green",
+          },
+          {
+            title: "Sprint Planning",
+            icon: "fas fa-tasks",
+            color: "icon-orange",
+          },
+          {
+            title: "Kanban Method",
+            icon: "fas fa-columns",
+            color: "icon-teal",
+          },
+          {
+            title: "Scaled Agile",
+            icon: "fas fa-expand-arrows-alt",
+            color: "icon-red",
+          },
+        ],
+        leadership: [
+          {
+            title: "Leadership Fundamentals",
+            icon: "fas fa-user-graduate",
+            color: "icon-blue",
+          },
+          {
+            title: "Emotional Intelligence",
+            icon: "fas fa-heart",
+            color: "icon-red",
+          },
+          {
+            title: "Decision Making",
+            icon: "fas fa-balance-scale",
+            color: "icon-purple",
+          },
+          {
+            title: "Change Management",
+            icon: "fas fa-exchange-alt",
+            color: "icon-green",
+          },
+          {
+            title: "Strategic Thinking",
+            icon: "fas fa-chess",
+            color: "icon-orange",
+          },
+          {
+            title: "Conflict Resolution",
+            icon: "fas fa-handshake",
+            color: "icon-teal",
+          },
+        ],
+        "team-management": [
+          {
+            title: "Team Building",
+            icon: "fas fa-users-cog",
+            color: "icon-green",
+          },
+          {
+            title: "Performance Management",
+            icon: "fas fa-chart-bar",
+            color: "icon-blue",
+          },
+          {
+            title: "Delegation Skills",
+            icon: "fas fa-hand-point-right",
+            color: "icon-purple",
+          },
+          {
+            title: "Motivation Techniques",
+            icon: "fas fa-rocket",
+            color: "icon-orange",
+          },
+          {
+            title: "Remote Team Management",
+            icon: "fas fa-laptop-house",
+            color: "icon-teal",
+          },
+          {
+            title: "Cross-functional Teams",
+            icon: "fas fa-project-diagram",
+            color: "icon-red",
+          },
+        ],
+      };
+
+      courseData.softskills = {
+        communication: [
+          {
+            title: "Effective Communication",
+            icon: "fas fa-comments",
+            color: "icon-blue",
+          },
+          {
+            title: "Public Speaking",
+            icon: "fas fa-microphone",
+            color: "icon-green",
+          },
+          {
+            title: "Active Listening",
+            icon: "fas fa-ear",
+            color: "icon-purple",
+          },
+          {
+            title: "Written Communication",
+            icon: "fas fa-pen",
+            color: "icon-orange",
+          },
+          {
+            title: "Cross-cultural Communication",
+            icon: "fas fa-globe",
+            color: "icon-teal",
+          },
+          {
+            title: "Difficult Conversations",
+            icon: "fas fa-exclamation-triangle",
+            color: "icon-red",
+          },
+        ],
+        presentation: [
+          {
+            title: "Presentation Design",
+            icon: "fas fa-palette",
+            color: "icon-purple",
+          },
+          {
+            title: "Storytelling",
+            icon: "fas fa-book-open",
+            color: "icon-blue",
+          },
+          {
+            title: "Visual Communication",
+            icon: "fas fa-chart-pie",
+            color: "icon-green",
+          },
+          {
+            title: "Audience Engagement",
+            icon: "fas fa-users",
+            color: "icon-orange",
+          },
+          {
+            title: "PowerPoint Mastery",
+            icon: "fas fa-desktop",
+            color: "icon-teal",
+          },
+          {
+            title: "Virtual Presentations",
+            icon: "fas fa-video",
+            color: "icon-red",
+          },
+        ],
+        "time-management": [
+          {
+            title: "Priority Setting",
+            icon: "fas fa-sort",
+            color: "icon-blue",
+          },
+          {
+            title: "Goal Setting",
+            icon: "fas fa-bullseye",
+            color: "icon-green",
+          },
+          {
+            title: "Productivity Techniques",
+            icon: "fas fa-rocket",
+            color: "icon-purple",
+          },
+          {
+            title: "Work-Life Balance",
+            icon: "fas fa-balance-scale",
+            color: "icon-orange",
+          },
+          {
+            title: "Stress Management",
+            icon: "fas fa-leaf",
+            color: "icon-teal",
+          },
+          {
+            title: "Digital Tools",
+            icon: "fas fa-mobile-alt",
+            color: "icon-red",
+          },
+        ],
+        "problem-solving": [
+          {
+            title: "Critical Thinking",
+            icon: "fas fa-brain",
+            color: "icon-purple",
+          },
+          {
+            title: "Creative Problem Solving",
+            icon: "fas fa-lightbulb",
+            color: "icon-yellow",
+          },
+          {
+            title: "Root Cause Analysis",
+            icon: "fas fa-search",
+            color: "icon-blue",
+          },
+          {
+            title: "Decision Making",
+            icon: "fas fa-route",
+            color: "icon-green",
+          },
+          {
+            title: "Innovation Techniques",
+            icon: "fas fa-star",
+            color: "icon-orange",
+          },
+          {
+            title: "Analytical Skills",
+            icon: "fas fa-chart-line",
+            color: "icon-teal",
+          },
+        ],
+      };
+    </script>
+  </body>
+</html>
